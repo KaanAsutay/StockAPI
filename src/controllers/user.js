@@ -66,6 +66,17 @@ module.exports = {
     },
 
     read: async (req, res) => {
+        /*
+            #swagger.tags = ["Users"]
+            #swagger.summary = "Get Single User"
+        */
+
+        const data = await User.findOne({ _id: req.params.id })
+
+        res.status(200).send({
+            error: false,
+            data
+        })
 
     },
 
