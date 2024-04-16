@@ -10,13 +10,13 @@ const router = require('express').Router()
 
 // // auth:
 // router.use('/auth', require('./auth'))
-// // user:
+// user:
 router.use('/users', require('./user'))
-// // token:
+// token:
 router.use('/tokens', require('./token'))
 
 
-// // brand:
+// brand:
 router.use('/brands', require('./brand'))
 // // category:
 // router.use('/categories', require('./category'))
