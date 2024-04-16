@@ -35,6 +35,33 @@ module.exports = {
     },
 
     create: async (req, res) => {
+         /*
+            #swagger.tags = ["Users"]
+            #swagger.summary = "Create User"
+            #swagger.parameters['body'] = {
+                in: 'body',
+                required: true,
+                schema: {
+                    "username": "test",
+                    "password": "1234",
+                    "email": "test@site.com",
+                    "first_name": "test",
+                    "last_name": "test",
+                }
+            }
+        */
+
+        // Disallow setting admin/staff:
+        req.body.is_staff = false
+        req.body.is_superadmin = false
+
+        const data = await User.create(req.body)
+
+        res.status(201).send({
+            error: false,
+            data
+        })
+
 
     },
 
