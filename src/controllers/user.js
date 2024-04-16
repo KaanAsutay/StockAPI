@@ -81,7 +81,29 @@ module.exports = {
     },
 
     update: async (req, res) => {
+        /*
+            #swagger.tags = ["Users"]
+            #swagger.summary = "Update User"
+            #swagger.parameters['body'] = {
+                in: 'body',
+                required: true,
+                schema: {
+                    "username": "test",
+                    "password": "1234",
+                    "email": "test@site.com",
+                    "first_name": "test",
+                    "last_name": "test",
+                }
+            }
+        */
 
+        const data = await User.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
+
+        res.status(202).send({
+            error: false,
+            data,
+            new: await User.findOne({ _id: req.params.id })
+        })
     },
 
     delete: async (req, res) => {
