@@ -22,16 +22,17 @@ module.exports = {
             `
         */
 
-        const data = await res.getModellist(User)
 
-        // res.status(200).send({
-        //     error: false,
-        //     details: await res.getModelListDetails(User),
-        //     data
-        // })
+        const data = await res.getModelList(User)
+
+        res.status(200).send({
+            error: false,
+            details: await res.getModelListDetails(User),
+            data
+        })
 
         // FOR REACT PROJECT:
-        res.status(200).send(data)
+        // res.status(200).send(data)
     },
 
     create: async (req, res) => {
