@@ -49,6 +49,7 @@ module.exports = {
         // Auto add user_id to req.body:
         req.body.user_id = req.user?._id
 
+        // Create:
         const data = await Purchase.create(req.body)
 
         // set stock (quantity) when Purchase process:
@@ -99,6 +100,9 @@ module.exports = {
             #swagger.tags = ["Purchases"]
             #swagger.summary = "Delete Purchase"
         */
+
+        // get current stock quantity from the Purchase:
+        const dataPurchase = await Purchase.findOne({ _id: req.params.id })
 
         const data = await Purchase.deleteOne({ _id: req.params.id })
 
