@@ -8,7 +8,7 @@ module.exports = {
 
     isLogin: (req, res, next) => {
 
-        if (req.user & req.user.is_active) {
+        if (req.user && req.user.is_active) {
 
             next()
 
@@ -20,7 +20,7 @@ module.exports = {
 
     isAdmin: (req, res, next) => {
 
-        if (req.user & req.user.isAdmin & req.user.is_superadmin) {
+        if (req.user && req.user.isAdmin && req.user.is_superadmin) {
             
             next()
 
@@ -32,7 +32,7 @@ module.exports = {
 
     isStaff: (req, res, next) => {
 
-        if (req.user & req.user.is_active & (req.user.is_superadmin || req.user.is_staff)) {
+        if (req.user && req.user.is_active && (req.user.is_superadmin || req.user.is_staff)) {
             
             next()
 
