@@ -52,10 +52,6 @@ module.exports = {
             }
         */
 
-        // Disallow setting admin/staff:
-        req.body.is_staff = false
-        req.body.is_superadmin = false
-
         const data = await Token.create(req.body)
 
         res.status(201).send({
