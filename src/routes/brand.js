@@ -13,7 +13,7 @@ const brand = require('../controllers/brand')
 
 router.route('/')
     .get(permissions.isStaff, brand.list)
-    .post(permissions.isAdmin, brand.create)
+    .post(permissions.isStaff, brand.create)
 
 router.route('/:id')
     .get(permissions.isStaff, brand.read)
