@@ -6,7 +6,7 @@ const router = require('express').Router()
 /* ------------------------------------------------------- */
 // routes/sale:
 
-const permissions = require('../middlewares/permissions') 
+const permissions = require('../middlewares/permissions')
 const sale = require('../controllers/sale')
 
 // URL: /sales

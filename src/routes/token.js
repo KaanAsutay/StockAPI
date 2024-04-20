@@ -6,7 +6,7 @@ const router = require('express').Router()
 /* ------------------------------------------------------- */
 // routes/token:
 
-const { isAdmin } = require('../middlewares/permissions') 
+const { isAdmin } = require('../middlewares/permissions')
 const token = require('../controllers/token')
 
 // URL: /tokens
