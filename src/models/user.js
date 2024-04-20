@@ -64,13 +64,13 @@ const UserSchema = new mongoose.Schema({
     first_name: {
         type: String,
         trim: true,
-        required: true,
+        required: true
     },
 
     last_name: {
         type: String,
         trim: true,
-        required: true,
+        required: true
     },
 
     is_active: {
@@ -86,9 +86,9 @@ const UserSchema = new mongoose.Schema({
     is_superadmin: {
         type: Boolean,
         default: false
-    }
+    },
 
-}, {collection: 'users', timestamps: true})
+}, { collection: 'users', timestamps: true })
 
 /* ------------------------------------------------------- */
 // Schema Configs:

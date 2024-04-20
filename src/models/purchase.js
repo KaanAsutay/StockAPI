@@ -52,9 +52,9 @@ const PurchaseSchema = new mongoose.Schema({
 
     price_total: {
         type: Number,
-        default: function(){ return this.price * this.quantity }, // for CREATE
-        transform: function(){ return this.price * this.quantity }, // for UPDATE
-        // set: function(){ return this.price * this.quantity } // for sendingData
+        default: function () { return this.price * this.quantity }, // for CREATE
+        transform: function () { return this.price * this.quantity }, // for UPDATE
+        // set: function () { return this.price * this.quantity } // for sendingData
     }
 
 }, { collection: 'purchases', timestamps: true })
