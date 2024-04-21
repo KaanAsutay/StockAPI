@@ -29,16 +29,43 @@ dbConnection()
 // Accept JSON:
 app.use(express.json())
 
-// CORS:
+// CORS Middleware:
+// https://expressjs.com/en/resources/middleware/cors.html
 // npm i cors
-const cors = require('cors')
+
+// const cors = require('cors')
+// Default using:
+// app.use(cors())
+// Default options:
 // app.use(cors({
 //     "origin": "*",
 //     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
 //     "preflightContinue": false,
 //     "optionsSuccessStatus": 204
 // }))
-app.use(cors())
+/*
+
+    if (process.env.NODE_ENV=="development") {
+        const corsOptions = {}
+    } else {
+        const corsOptions = {}
+    }
+    app.use(cors(corsOptions))
+*/
+// app.use(cors({
+//     "origin": ["http://localhost:3000", "http://localhost:4173", "http://localhost:5173"], //"http://localhost:5173", // true // false // "*",
+//     // "origin": function (origin, callback) { },
+//     "methods": "GET, HEAD, PUT, PATCH, POST, DELETE",
+// }))
+/*
+    app.get('*', cors({ origin: 'onlyget.com' }))
+    app.all('*', cors({ origin: 'allmethods.com' }))
+*/
+
+// app.use(require('cors')()) // Run with defaults.
+app.use(require('cors')({
+    origin: ["http://localhost:3000", "http://localhost:4173", "http://localhost:5173"]
+}))
 
 // Call static uploadFile:
 app.use('/upload', express.static('./upload'))
