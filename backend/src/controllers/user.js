@@ -33,7 +33,7 @@ module.exports = {
         //     details: await res.getModelListDetails(User),
         //     data
         // })
-        
+
         // FOR REACT PROJECT:
         res.status(200).send(data)
     },
@@ -67,10 +67,17 @@ module.exports = {
             token: passwordEncrypt(data._id + Date.now())
         })
 
+        // res.status(201).send({
+        //     error: false,
+        //     token: tokenData.token,
+        //     data
+        // })
+
+        // FOR REACT PROJECT:
         res.status(201).send({
             error: false,
             token: tokenData.token,
-            data
+            ...data._doc
         })
     },
 
