@@ -10,6 +10,11 @@ const router = require('express').Router()
 
 // auth:
 router.use('/account/auth', require('./auth'))
+// call user.create for /account/register:
+const { create: userCreate } = require('../controllers/user')
+router.use('/account/register', userCreate)
+
+
 // user:
 router.use('/users', require('./user'))
 // token:
