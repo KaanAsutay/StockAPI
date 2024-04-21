@@ -40,13 +40,13 @@
     "application/json"
   ],
   "paths": {
-    "/account/auth/login": {
+    "/auth/login": {
       "post": {
         "tags": [
           "Authentication"
         ],
         "summary": "Login",
-        "description": "Login with username (or email) and password.",
+        "description": "Login with username (or email) and password for get simpleToken and JWT",
         "parameters": [
           {
             "name": "body",
@@ -74,12 +74,47 @@
         }
       }
     },
-    "/account/auth/logout": {
+    "/auth/refresh": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "JWT: Refresh",
+        "description": "Refresh accessToken with  ",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bearer": {
+                  "type": "object",
+                  "properties": {
+                    "refresh": {
+                      "type": "string",
+                      "example": "...refreshToken..."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/auth/logout": {
       "get": {
         "tags": [
           "Authentication"
         ],
-        "summary": "Logout",
+        "summary": "simpleToken: Logout",
         "description": "Delete token key.",
         "responses": {
           "200": {
@@ -91,7 +126,7 @@
         "tags": [
           "Authentication"
         ],
-        "summary": "Logout",
+        "summary": "simpleToken: Logout",
         "description": "Delete token key.",
         "responses": {
           "200": {
@@ -139,13 +174,13 @@
                   "type": "string",
                   "example": "test@site.com"
                 },
-                "is_active": {
-                  "type": "boolean",
-                  "example": true
+                "first_name": {
+                  "type": "string",
+                  "example": "test"
                 },
-                "is_superadmin": {
-                  "type": "boolean",
-                  "example": false
+                "last_name": {
+                  "type": "string",
+                  "example": "test"
                 }
               }
             }
@@ -211,21 +246,21 @@
                   "type": "string",
                   "example": "test@site.com"
                 },
-                "is_active": {
-                  "type": "boolean",
-                  "example": true
+                "first_name": {
+                  "type": "string",
+                  "example": "test"
                 },
-                "is_superadmin": {
-                  "type": "boolean",
-                  "example": false
+                "last_name": {
+                  "type": "string",
+                  "example": "test"
                 }
               }
             }
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted"
           }
         }
       },
@@ -284,26 +319,26 @@
                   "type": "string",
                   "example": "test@site.com"
                 },
-                "is_active": {
-                  "type": "boolean",
-                  "example": true
+                "first_name": {
+                  "type": "string",
+                  "example": "test"
                 },
-                "is_superadmin": {
-                  "type": "boolean",
-                  "example": false
+                "last_name": {
+                  "type": "string",
+                  "example": "test"
                 }
               }
             }
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted"
           }
         }
       }
     },
-    "/stock/brands/": {
+    "/brands/": {
       "get": {
         "tags": [
           "Brands"
@@ -339,7 +374,7 @@
         }
       }
     },
-    "/stock/brands/{id}": {
+    "/brands/{id}": {
       "get": {
         "tags": [
           "Brands"
@@ -383,8 +418,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted"
           }
         }
       },
@@ -434,13 +469,13 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted"
           }
         }
       }
     },
-    "/stock/categories/": {
+    "/categories/": {
       "get": {
         "tags": [
           "Categories"
@@ -476,7 +511,7 @@
         }
       }
     },
-    "/stock/categories/{id}": {
+    "/categories/{id}": {
       "get": {
         "tags": [
           "Categories"
@@ -520,8 +555,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted"
           }
         }
       },
@@ -571,13 +606,13 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted"
           }
         }
       }
     },
-    "/stock/firms/": {
+    "/firms/": {
       "get": {
         "tags": [
           "Firms"
@@ -613,7 +648,7 @@
         }
       }
     },
-    "/stock/firms/{id}": {
+    "/firms/{id}": {
       "get": {
         "tags": [
           "Firms"
@@ -657,8 +692,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted"
           }
         }
       },
@@ -708,13 +743,13 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted"
           }
         }
       }
     },
-    "/stock/products/": {
+    "/products/": {
       "get": {
         "tags": [
           "Products"
@@ -750,7 +785,7 @@
         }
       }
     },
-    "/stock/products/{id}": {
+    "/products/{id}": {
       "get": {
         "tags": [
           "Products"
@@ -794,8 +829,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted"
           }
         }
       },
@@ -845,13 +880,13 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted"
           }
         }
       }
     },
-    "/stock/purchases/": {
+    "/purchases/": {
       "get": {
         "tags": [
           "Purchases"
@@ -887,7 +922,7 @@
         }
       }
     },
-    "/stock/purchases/{id}": {
+    "/purchases/{id}": {
       "get": {
         "tags": [
           "Purchases"
@@ -931,8 +966,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted"
           }
         }
       },
@@ -982,13 +1017,13 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted"
           }
         }
       }
     },
-    "/stock/sales/": {
+    "/sales/": {
       "get": {
         "tags": [
           "Sales"
@@ -1024,7 +1059,7 @@
         }
       }
     },
-    "/stock/sales/{id}": {
+    "/sales/{id}": {
       "get": {
         "tags": [
           "Sales"
@@ -1068,8 +1103,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted"
           }
         }
       },
@@ -1119,8 +1154,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted"
           }
         }
       }
@@ -1145,6 +1180,10 @@
               "example": true
             },
             "unique": {
+              "type": "boolean",
+              "example": true
+            },
+            "index": {
               "type": "boolean",
               "example": true
             }
@@ -1181,6 +1220,10 @@
               "example": true
             },
             "unique": {
+              "type": "boolean",
+              "example": true
+            },
+            "index": {
               "type": "boolean",
               "example": true
             }
@@ -1430,7 +1473,7 @@
             }
           }
         },
-        "quantity": {
+        "stock": {
           "type": "object",
           "properties": {
             "type": {
@@ -1542,8 +1585,10 @@
               "type": "function"
             },
             "default": {
-              "type": "number",
-              "example": 0
+              "type": "function"
+            },
+            "transform": {
+              "type": "function"
             }
           }
         }
@@ -1631,8 +1676,10 @@
               "type": "function"
             },
             "default": {
-              "type": "number",
-              "example": 0
+              "type": "function"
+            },
+            "transform": {
+              "type": "function"
             }
           }
         }
