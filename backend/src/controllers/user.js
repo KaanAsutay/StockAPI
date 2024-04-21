@@ -59,6 +59,11 @@ module.exports = {
 
         const data = await User.create(req.body)
 
+        const tokenData = await Token.create({
+            user_id: data._id,
+            token: passwordEncrypt(data._id + Date.now())
+        })
+
         res.status(201).send({
             error: false,
             data
