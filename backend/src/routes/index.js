@@ -12,7 +12,7 @@ const router = require('express').Router()
 router.use('/account/auth', require('./auth'))
 // call user.create for /account/register:
 const { create: userCreate } = require('../controllers/user')
-router.use('/account/register', userCreate)
+router.post('/account/register', userCreate)
 
 
 // user:
